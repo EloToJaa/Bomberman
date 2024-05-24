@@ -40,7 +40,7 @@ public class BombController : MonoBehaviour
         bombsRemaining--;
         // stawiamy bombê korzystaj¹c z BombSpawnera
         // podajemy w³asn¹ aktualn¹ pozycjê
-        BombSpawner.Instance.PlaceBomb(transform.position);
+        BombSpawner.Instance.PlaceBomb(transform.position, this);
         // ustawiamy ¿e stoimy na bombie aby zapobiec
         // stawianiu kolejnej do czasu odejœcia z kolejnej
         stayOnBomb = true;
