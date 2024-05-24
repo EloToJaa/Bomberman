@@ -20,7 +20,7 @@ public class Bomb : MonoBehaviour
         // stwórz eksplozjê, przeka¿ rozmiar od w³aœciciela bomby
 
         // zwiêksz w³aœcicielowi liczbê dostêpnych bomb
-
+        owner.IncreaseBombsRemaining();
         Destroy(gameObject);
     }
 }
