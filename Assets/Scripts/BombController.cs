@@ -9,7 +9,7 @@ public class BombController : MonoBehaviour
     [SerializeField] private KeyCode inputKey = KeyCode.Space;
 
     [Header("Bomb parameters")]
-    [SerializeField] private  int bombAmount = 1;
+    [SerializeField] private int bombAmount = 1;
     [SerializeField] private int explosionRadius = 2;
     public int GetExplosionRadius() => explosionRadius;
 
@@ -32,14 +32,34 @@ public class BombController : MonoBehaviour
     private void PlaceBomb()
     {
         // przerywamy jeœli gracz stoi na bombie
-        
+        if(stayOnBomb)
+        {
+            return;
+        }
         // zmniejszamy liczbê dostêpnych bomb
-        
+        bombsRemaining--;
         // stawiamy bombê korzystaj¹c z BombSpawnera
         // podajemy w³asn¹ aktualn¹ pozycjê
-        
+        BombSpawner.Instance.PlaceBomb(transform.position);
         // ustawiamy ¿e stoimy na bombie aby zapobiec
         // stawianiu kolejnej do czasu odejœcia z kolejnej
-        
+        stayOnBomb = true;
+    }
+
+    public void IncreaseBombsRemaining()
+    {
+        if(bombsRemaining < bombAmount)
+        {
+            bombsRemaining++;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == Bomb.BOMB_LAYER_MASK)
+        {
+            other.isTrigger = false;
+            stayOnBomb = false;
+        }
     }
 }
