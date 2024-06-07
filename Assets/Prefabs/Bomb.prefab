@@ -4946,6 +4946,7 @@ GameObject:
   - component: {fileID: 793303606983620971}
   - component: {fileID: 4339852386273746521}
   - component: {fileID: 240668238221348424}
+  - component: {fileID: -3622204231136196752}
   m_Layer: 7
   m_Name: Bomb
   m_TagString: Untagged
@@ -5010,4 +5011,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46238a1b079bd95498020ef4cd8574ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombFuseTime: 3
+  fuseTime: 3
+--- !u!114 &-3622204231136196752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793303606983620973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf762ce063a9e0045ad91f8ab4939acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRotating: 0
+  speed: 3
+  rotationSpeed: 7

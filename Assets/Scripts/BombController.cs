@@ -10,15 +10,15 @@ public class BombController : MonoBehaviour
 
     [Header("Bomb parameters")]
     [SerializeField] private int bombAmount = 1;
-    [SerializeField] private int explosionRadius = 1;
-    
+    [SerializeField] private int explosionRadius = 2;
+
     public int GetExplosionRadius() => explosionRadius;
     public int BombAmount => bombAmount;
-    public int ExplosionRadius => explosionRadius;
+    public int BombsRemaining => bombsRemaining;
 
     private int bombsRemaining;
     private bool stayOnBomb = false;
-    
+
     private void Awake()
     {
         bombsRemaining = bombAmount;
@@ -35,10 +35,7 @@ public class BombController : MonoBehaviour
     private void PlaceBomb()
     {
         // przerywamy jeœli gracz stoi na bombie
-        if(stayOnBomb)
-        {
-            return;
-        }
+        if (stayOnBomb) return;
         // zmniejszamy liczbê dostêpnych bomb
         bombsRemaining--;
         // stawiamy bombê korzystaj¹c z BombSpawnera
@@ -52,9 +49,7 @@ public class BombController : MonoBehaviour
     public void IncreaseBombsRemaining()
     {
         if(bombsRemaining < bombAmount)
-        {
             bombsRemaining++;
-        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -68,14 +63,14 @@ public class BombController : MonoBehaviour
 
     public void IncreaseBombAmount(int increaseAmount = 1)
     {
-        if(increaseAmount < 0) return;
+        if (increaseAmount < 0) return;
         bombAmount += increaseAmount;
         bombsRemaining++;
     }
 
     public void IncreaseExplosionRadius(int increaseAmount = 1)
     {
-        if(increaseAmount < 0) return;
+        if (increaseAmount < 0) return;
         explosionRadius += increaseAmount;
     }
 }
