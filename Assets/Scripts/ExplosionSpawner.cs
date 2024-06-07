@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ExplosionSpawner : MonoBehaviour
 {
@@ -35,16 +30,20 @@ public class ExplosionSpawner : MonoBehaviour
     private void TryToExplode(Vector3 position, Vector3 direction, int length)
     {
         // przerywamy jeœli nie ma pozosta³a d³ugoœæ eksplozji jest <= 0
+        if(length <= 0) return;
         
         // dodajemy do pozycji kierunek
         // (jest d³ugoœci 1 i skierowany góra/dó³/lewo/prawo)
+        position += direction;
         
         // sprawdzamy czy s¹ jakieœ mury na pozycji - jeœli tak to przerywamy
+        if(CheckForWalls(position)) return;
         
         // jeœli murów nie ma spawnujemy eksplozjê
+        SpawnExplosion(position);
         
         // próbujemy postawiæ nastêpn¹ eksplozjê w tym samym kierunku
-        
+        TryToExplode(position, direction, length - 1);
     }
 
     private void SpawnExplosion(Vector3 position)
