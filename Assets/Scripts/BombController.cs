@@ -10,8 +10,11 @@ public class BombController : MonoBehaviour
 
     [Header("Bomb parameters")]
     [SerializeField] private int bombAmount = 1;
-    [SerializeField] private int explosionRadius = 2;
+    [SerializeField] private int explosionRadius = 1;
+    
     public int GetExplosionRadius() => explosionRadius;
+    public int BombAmount => bombAmount;
+    public int ExplosionRadius => explosionRadius;
 
     private int bombsRemaining;
     private bool stayOnBomb = false;
@@ -61,5 +64,18 @@ public class BombController : MonoBehaviour
             other.isTrigger = false;
             stayOnBomb = false;
         }
+    }
+
+    public void IncreaseBombAmount(int increaseAmount = 1)
+    {
+        if(increaseAmount < 0) return;
+        bombAmount += increaseAmount;
+        bombsRemaining++;
+    }
+
+    public void IncreaseExplosionRadius(int increaseAmount = 1)
+    {
+        if(increaseAmount < 0) return;
+        explosionRadius += increaseAmount;
     }
 }

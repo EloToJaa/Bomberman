@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
         players = GameObject.FindGameObjectsWithTag(PlayerController.PLAYER_TAG);
         InvokeRepeating(nameof(CheckWinWstate), 2, 2);
     }
